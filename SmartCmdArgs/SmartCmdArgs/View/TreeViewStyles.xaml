@@ -6,7 +6,8 @@
                     xmlns:vs="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.14.0"
                     xmlns:imaging="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.Imaging"  
                     xmlns:theming="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Imaging"
-                    xmlns:utilities="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Utilities">
+                    xmlns:utilities="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Utilities"
+                    xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0">
 
     <!-- https://docs.microsoft.com/en-us/dotnet/framework/wpf/controls/treeview-styles-and-templates -->
 
@@ -15,7 +16,7 @@
             <utilities:BrushToColorConverter x:Key="BrushToColorConverter"/>
         </Style.Resources>
         <!-- Colors -->
-        <Setter Property="Background" Value="{DynamicResource {x:Static vs:TreeViewColors.BackgroundBrushKey}}"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static platformUi:TreeViewColors.BackgroundBrushKey}}"/>
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="FontSize" Value="{DynamicResource VsFont.EnvironmentFontSize}" />
 
@@ -33,8 +34,8 @@
 
     <Style x:Key="ExpandCollapseToggleStyle" TargetType="local:ToggleButtonEx">
         <Setter Property="Focusable" Value="False" />
-        <Setter Property="ExpandedStroke" Value="{DynamicResource {x:Static vs:TreeViewColors.GlyphBrushKey}}"/>
-        <Setter Property="CollapsedStroke" Value="{DynamicResource {x:Static vs:TreeViewColors.GlyphBrushKey}}"/>
+        <Setter Property="ExpandedStroke" Value="{DynamicResource {x:Static platformUi:TreeViewColors.GlyphBrushKey}}"/>
+        <Setter Property="CollapsedStroke" Value="{DynamicResource {x:Static platformUi:TreeViewColors.GlyphBrushKey}}"/>
         <Setter Property="CollapsedFill" Value="{x:Null}"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -74,13 +75,13 @@
                                 Data="M 9 3.45 L 9 9 L 2.64 9 Z"
                                 Visibility="Hidden"
                                 Stroke="{TemplateBinding ExpandedStroke}"
-                                Fill="{DynamicResource {x:Static vs:TreeViewColors.GlyphBrushKey}}"/>
+                                Fill="{DynamicResource {x:Static platformUi:TreeViewColors.GlyphBrushKey}}"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="CollapsedStroke" Value="{DynamicResource {x:Static vs:TreeViewColors.GlyphMouseOverBrushKey}}" />
-                            <Setter Property="ExpandedStroke" Value="{DynamicResource {x:Static vs:TreeViewColors.GlyphMouseOverBrushKey}}" />
-                            <Setter TargetName="Expanded" Property="Fill" Value="{DynamicResource {x:Static vs:TreeViewColors.GlyphMouseOverBrushKey}}" />
+                            <Setter Property="CollapsedStroke" Value="{DynamicResource {x:Static platformUi:TreeViewColors.GlyphMouseOverBrushKey}}" />
+                            <Setter Property="ExpandedStroke" Value="{DynamicResource {x:Static platformUi:TreeViewColors.GlyphMouseOverBrushKey}}" />
+                            <Setter TargetName="Expanded" Property="Fill" Value="{DynamicResource {x:Static platformUi:TreeViewColors.GlyphMouseOverBrushKey}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -90,9 +91,9 @@
 
 
     <Style x:Key="ItemBaseStyle" TargetType="{x:Type TreeViewItem}">
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static vs:TreeViewColors.BackgroundTextBrushKey}}"/>
-        <Setter Property="Background" Value="{DynamicResource {x:Static vs:TreeViewColors.BackgroundBrushKey}}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static vs:EnvironmentColors.ToolWindowContentGridBrushKey}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static platformUi:TreeViewColors.BackgroundTextBrushKey}}"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static platformUi:TreeViewColors.BackgroundBrushKey}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static platformUi:EnvironmentColors.ToolWindowContentGridBrushKey}}" />
         <Setter Property="BorderThickness" Value="0,0,0,1" />
         <Setter Property="AllowDrop" Value="True" />
         <Setter Property="Template">
@@ -148,16 +149,16 @@
                                 <Condition Property="local:TreeViewEx.IsItemSelected" Value="True"/>
                                 <Condition SourceName="Expander" Property="IsMouseOver" Value="True"/>
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="Expander" Property="ExpandedStroke" Value="{DynamicResource {x:Static vs:TreeViewColors.GlyphBrushKey}}"/>
-                            <Setter TargetName="Expander" Property="CollapsedStroke" Value="{DynamicResource {x:Static vs:TreeViewColors.GlyphBrushKey}}"/>
-                            <Setter TargetName="Expander" Property="CollapsedFill" Value="{DynamicResource {x:Static vs:TreeViewColors.GlyphBrushKey}}"/>
+                            <Setter TargetName="Expander" Property="ExpandedStroke" Value="{DynamicResource {x:Static platformUi:TreeViewColors.GlyphBrushKey}}"/>
+                            <Setter TargetName="Expander" Property="CollapsedStroke" Value="{DynamicResource {x:Static platformUi:TreeViewColors.GlyphBrushKey}}"/>
+                            <Setter TargetName="Expander" Property="CollapsedFill" Value="{DynamicResource {x:Static platformUi:TreeViewColors.GlyphBrushKey}}"/>
                         </MultiTrigger>
                         <Trigger Property="HasItems" Value="false">
                             <Setter Property="Visibility" TargetName="Expander" Value="Hidden"/>
                         </Trigger>
                         <Trigger Property="local:TreeViewEx.IsItemSelected" Value="true">
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static vs:TreeViewColors.SelectedItemActiveTextBrushKey}}"/>
-                            <Setter Property="Background" Value="{DynamicResource {x:Static vs:TreeViewColors.SelectedItemActiveBrushKey}}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static platformUi:TreeViewColors.SelectedItemActiveTextBrushKey}}"/>
+                            <Setter Property="Background" Value="{DynamicResource {x:Static platformUi:TreeViewColors.SelectedItemActiveBrushKey}}"/>
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -165,11 +166,11 @@
                                 <Condition Property="IsSelectionActive" Value="false"/>
                                 <!--<Condition Property="IsFocused" Value="false"/>-->
                             </MultiTrigger.Conditions>
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static vs:TreeViewColors.SelectedItemInactiveTextBrushKey}}"/>
-                            <Setter Property="Background" Value="{DynamicResource {x:Static vs:TreeViewColors.SelectedItemInactiveBrushKey}}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static platformUi:TreeViewColors.SelectedItemInactiveTextBrushKey}}"/>
+                            <Setter Property="Background" Value="{DynamicResource {x:Static platformUi:TreeViewColors.SelectedItemInactiveBrushKey}}"/>
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="{DynamicResource {x:Static vs:EnvironmentColors.SystemGrayTextBrushKey}}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static platformUi:EnvironmentColors.SystemGrayTextBrushKey}}"/>
                         </Trigger>
                         <!--<MultiTrigger>
                             <MultiTrigger.Conditions>
